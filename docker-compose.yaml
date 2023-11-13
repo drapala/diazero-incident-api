@@ -5,6 +5,7 @@ services:
     container_name: incidentapi.mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
       MYSQL_DATABASE: incidentapi
     ports:
       - "3306:3306"
@@ -13,8 +14,8 @@ services:
   flyway:
     image: boxfuse/flyway
     container_name: incidentapi.flyway
-    command: ["-url=jdbc:mysql://mysql:3306/incidentapi", "-user=root", "-password=root", "migrate"]
+    command: ["-url=jdbc:mysql://mysql:3306/incidentapi", "-schemas=incident-api", "-user=root", "-connectRetries=120", "-password=root", "migrate"]
     depends_on:
       - mysql
     volumes:
-      - /path/to/flyway/migrations:/flyway/sql
+      - ./src/main/resources/db/migration:/flyway/sql

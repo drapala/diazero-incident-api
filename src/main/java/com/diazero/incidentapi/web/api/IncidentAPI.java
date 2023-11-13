@@ -15,24 +15,25 @@ import java.util.List;
 
 @Tag(name = "Incidents")
 @RequestMapping(value = "/v1")
-@RestController
 public interface IncidentAPI {
 
     @GetMapping(
-            path = "/incident/{id}",
+            path = "incident/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Returns incident by id")
+    @Operation(
+            summary = "Returns incident by id"
+    )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Incident returned successfully."),
             @ApiResponse(responseCode = "404", description = "Incident not found in database."),
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
     })
-    ResponseEntity<IncidentDTO> retrieveIncidentById(@PathVariable Long id);
+    ResponseEntity<IncidentDTO> retrieveIncidentById(@PathVariable(name = "id") Long id);
 
     @GetMapping(
-            path = "/incident",
+            path = "incident",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @Operation(summary = "Returns all incidents registered in database")
@@ -43,7 +44,7 @@ public interface IncidentAPI {
     ResponseEntity<List<IncidentDTO>> retrieveAllIncidents();
 
     @PostMapping(
-            path = "/incident",
+            path = "incident",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @Operation(summary = "Adds an incident on database")
@@ -55,7 +56,7 @@ public interface IncidentAPI {
     ResponseEntity<IncidentDTO> addIncident(@RequestBody IncidentRequest incidentRequest) throws URISyntaxException;
 
     @PutMapping(
-            path = "/incident/{id}",
+            path = "incident/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
     @Operation(summary = "Updates an Incident")
@@ -64,11 +65,10 @@ public interface IncidentAPI {
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
     })
-    ResponseEntity<IncidentDTO> updateIncident(@PathVariable final Long id, @RequestBody final IncidentRequest incidentRequest);
+    ResponseEntity<IncidentDTO> updateIncident(@PathVariable(name = "id") Long id, @RequestBody final IncidentRequest incidentRequest);
 
     @DeleteMapping(
-            path = "/incident/{id}",
-            produces = MediaType.APPLICATION_JSON_VALUE
+            path = "incident/{id}"
     )
     @Operation(summary = "Deletes an incident by id")
     @ApiResponses(value = {
@@ -76,5 +76,5 @@ public interface IncidentAPI {
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
     })
-    ResponseEntity<Void> deleteIncident(@PathVariable Long id);
+    ResponseEntity<Void> deleteIncident(@PathVariable(name = "id") Long id);
 }

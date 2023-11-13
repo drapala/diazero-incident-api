@@ -19,7 +19,7 @@ public class IncidentService {
 
     private final IncidentRepository incidentRepository;
 
-    private final IncidentMapper incidentMapper;
+    protected final IncidentMapper incidentMapper;
 
     public IncidentDTO retrieveIncidentById(Long id) {
         Optional<IncidentEntity> incidentEntity = incidentRepository.findById(id);

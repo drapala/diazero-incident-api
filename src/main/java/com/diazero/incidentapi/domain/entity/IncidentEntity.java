@@ -1,11 +1,11 @@
 package com.diazero.incidentapi.domain.entity;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 import java.time.Instant;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Data
 @Builder

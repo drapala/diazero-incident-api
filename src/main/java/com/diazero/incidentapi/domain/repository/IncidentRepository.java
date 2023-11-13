@@ -6,15 +6,16 @@ import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IncidentRepository extends JpaRepository<IncidentEntity, Long> {
 
-    IncidentEntity findByName(String incidentName);
-
-    List<IncidentEntity> findByInitialDateBetween(Instant startDate, Instant endDate);
-
-    List<IncidentEntity> findByFinalDateBetween(Instant startDate, Instant endDate);
-
-    List<IncidentEntity> findByObservation(String keyword);
+//    Optional<IncidentEntity> findByName(String incidentName);
+//
+//    Optional<List<IncidentEntity>> findByInitialDateBetween(Instant startDate, Instant endDate);
+//
+//    Optional<List<IncidentEntity>> findByFinalDateBetween(Instant startDate, Instant endDate);
+//
+//    Optional<List<IncidentEntity>> findByObservation(String keyword);
 }
