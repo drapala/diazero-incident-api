@@ -46,4 +46,9 @@ public class IncidentController implements IncidentAPI {
         incidentService.deleteIncident(id);
         return ResponseEntity.noContent().build();
     }
+
+    @Override
+    public ResponseEntity<List<IncidentDTO>> retrieveLast20Incidents() {
+        return ResponseEntity.ok(incidentService.retrieveLast20Incidents());
+    }
 }

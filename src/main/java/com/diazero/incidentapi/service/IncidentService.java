@@ -19,7 +19,15 @@ public class IncidentService {
 
     private final IncidentRepository incidentRepository;
 
-    protected final IncidentMapper incidentMapper;
+    private final IncidentMapper incidentMapper;
+
+    public List<IncidentDTO> retrieveLast20Incidents() {
+        return incidentRepository.findLast20ByCreatedAtDesc()
+                .orElseThrow()
+                .stream()
+                .map(incidentMapper::toDTO)
+                .toList();
+    }
 
     public IncidentDTO retrieveIncidentById(Long id) {
         Optional<IncidentEntity> incidentEntity = incidentRepository.findById(id);
@@ -36,7 +44,7 @@ public class IncidentService {
         return incidentRepository.findAll()
                 .stream()
                 .map(incidentMapper::toDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public IncidentDTO addIncident(IncidentRequest incidentRequest) {

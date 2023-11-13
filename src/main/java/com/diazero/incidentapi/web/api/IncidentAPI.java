@@ -77,4 +77,15 @@ public interface IncidentAPI {
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
     })
     ResponseEntity<Void> deleteIncident(@PathVariable(name = "id") Long id);
+
+    @GetMapping(
+            path = "incident/last20Incidents",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Operation(summary = "Returns all incidents registered in database")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "All incidents were returned successfully."),
+            @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
+    })
+     ResponseEntity<List<IncidentDTO>> retrieveLast20Incidents();
 }
