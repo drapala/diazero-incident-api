@@ -15,6 +15,7 @@ import java.util.List;
 
 @Tag(name = "Incidents")
 @RequestMapping(value = "/v1")
+@RestController
 public interface IncidentAPI {
 
     @GetMapping(
@@ -45,13 +46,25 @@ public interface IncidentAPI {
             path = "/incident",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Adds an Incident on database")
+    @Operation(summary = "Adds an incident on database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Incident created successfully."),
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
     })
-    ResponseEntity<IncidentDTO> addPerson(@RequestBody IncidentRequest personRequest) throws URISyntaxException;
+    ResponseEntity<IncidentDTO> addIncident(@RequestBody IncidentRequest incidentRequest) throws URISyntaxException;
+
+    @PutMapping(
+            path = "/incident/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @Operation(summary = "Updates an Incident")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "202", description = "Incident updated successfully."),
+            @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
+            @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
+    })
+    ResponseEntity<IncidentDTO> updateIncident(@PathVariable final Long id, @RequestBody final IncidentRequest incidentRequest);
 
     @DeleteMapping(
             path = "/incident/{id}",
