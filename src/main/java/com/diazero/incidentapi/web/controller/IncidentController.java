@@ -38,13 +38,9 @@ public class IncidentController implements IncidentAPI {
         return ResponseEntity.ok(incidentService.updateIncident(id, incidentRequest));
     }
 
-    // tá igual :( mas fodase jaja preciso entregar
-
     @Override
     public ResponseEntity<Void> deleteIncident(Long id) {
         incidentService.deleteIncident(id);
         return ResponseEntity.noContent().build();
     }
-    // nested exception is java.lang.IllegalArgumentException:
-    // Unresolvable class definition for class [org.springdoc.core.conditions.MultipleOpenApiSupportCondition
 }
