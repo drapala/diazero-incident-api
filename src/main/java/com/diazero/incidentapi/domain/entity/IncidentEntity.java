@@ -21,7 +21,7 @@ public class IncidentEntity {
     @Column(name = "id_incident", nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "name_incident", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "description")
