@@ -22,7 +22,7 @@ public interface IncidentAPI {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @Operation(
-            summary = "Returns incident by id"
+            summary = "returns incident by id"
     )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Incident returned successfully."),
@@ -36,7 +36,7 @@ public interface IncidentAPI {
             path = "incident",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Returns all incidents registered in database")
+    @Operation(summary = "returns all incidents registered in database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All incidents were returned successfully."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
@@ -47,7 +47,7 @@ public interface IncidentAPI {
             path = "incident",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Adds an incident on database")
+    @Operation(summary = "adds an incident on database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Incident created successfully."),
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
@@ -59,7 +59,7 @@ public interface IncidentAPI {
             path = "incident/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Updates an Incident")
+    @Operation(summary = "updates an incident by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "202", description = "Incident updated successfully."),
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
@@ -70,7 +70,7 @@ public interface IncidentAPI {
     @DeleteMapping(
             path = "incident/{id}"
     )
-    @Operation(summary = "Deletes an incident by id")
+    @Operation(summary = "deletes an incident by id")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Incident deleted successfully."),
             @ApiResponse(responseCode = "400", description = "Invalid parameters, check out your request."),
@@ -82,7 +82,7 @@ public interface IncidentAPI {
             path = "incident/last20Incidents",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Returns last 20 incidents registered in database")
+    @Operation(summary = "returns last 20 incidents registered in database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All incidents were returned successfully."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
