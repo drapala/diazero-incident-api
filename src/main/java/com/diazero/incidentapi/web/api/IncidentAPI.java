@@ -82,7 +82,7 @@ public interface IncidentAPI {
             path = "incident/last20Incidents",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    @Operation(summary = "Returns all incidents registered in database")
+    @Operation(summary = "Returns last 20 incidents registered in database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All incidents were returned successfully."),
             @ApiResponse(responseCode = "500", description = "An internal error was thrown.")
